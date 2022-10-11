@@ -7,4 +7,4 @@ class Catalog(models.Model):
     title = models.CharField(max_length=350, null=True, blank=True)
 
     def __str__(self):
-        return self.article
+        return self.brand
