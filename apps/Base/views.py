@@ -24,7 +24,7 @@ class ArticleView(generics.GenericAPIView):
         req = requests.get(f'https://basket-05.wb.ru/vol735/part73512/{article}/info/ru/card.json').json()
         data = {
             'article': req.get('nm_id'),
-            'brand': req.get('imt_name'),
+            'brand': req.get('selling').get('brand_name'),
             'title': req.get('description')
         }
         serializer = self.get_serializer(data=data)
