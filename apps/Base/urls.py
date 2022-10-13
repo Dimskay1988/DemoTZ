@@ -1,4 +1,4 @@
-from apps.Base.views import CatalogView, DataView, ArticleView
+from apps.Base.views import CatalogView, ArticleView
 from rest_framework.routers import DefaultRouter
 from django.urls import path
 
@@ -6,7 +6,6 @@ from django.urls import path
 
 urlpatterns = [
 
-    path('catalog/', DataView.as_view()),
     path('input/', ArticleView.as_view()),
     path('product/', CatalogView.as_view({'get': 'list'})),
 

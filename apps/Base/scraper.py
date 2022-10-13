@@ -38,11 +38,7 @@ def parser(results):
 
 
 if __name__ == '__main__':
-    urls = [
-        # 'https://www.wildberries.ru/catalog/73512949/detail.aspx',
-        # 'https://basket-05.wb.ru/vol735/part73512/73512949/info/ru/card.json'
-        # f'https://basket-05.wb.ru/vol735/part73512/{article}/info/ru/card.json'
-            ]
+    urls = []
 
     results = asyncio.run(main(urls))
     parser(results)
