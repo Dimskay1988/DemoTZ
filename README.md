@@ -37,16 +37,6 @@ Create .env file in CryptoAnalytics root folder:
 touch .env
 ```
 
-```sh
-SECRET_KEY = config('SECRET_KEY')
-```
-
-```sh
-DEBUG = config('DEBUG')
-```
-
-
-
 Your secret key, token and debug should be in .env file like this:
 
 ```sh
