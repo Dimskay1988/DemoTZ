@@ -25,27 +25,21 @@ async def main(urls):
 
 def parser(results):
     for html in results:
-        soup = BeautifulSoup(html, 'html.parser')
+        soup = BeautifulSoup(html, 'lxml')
         # r = soup.find(name='div')
         # print(soup.find('p', {'class': 'product-article'}))
-        print(soup)
+        artikle = soup.find_all('href')
+        print(artikle)
         # print(soup.find('div', {'class': 'styles_contentSlot__h_lSN'}))
     return
 
 
 if __name__ == '__main__':
-    urls = ['https://www.wildberries.ru/catalog/73512949/detail.aspx']
+    urls = [
+        # 'https://www.wildberries.ru/catalog/73512949/detail.aspx',
+        'https://basket-05.wb.ru/vol735/part73512/73512949/info/ru/card.json'
+            ]
 
     results = asyncio.run(main(urls))
     parser(results)
 
-# async def main():
-#     async with aiohttp.ClientSession() as session:
-#         async with session.get('https://www.wildberries.ru/catalog/73512949/detail.aspx', ssl=False) as resp:
-#             print(resp.status)
-#             # resp_text = await resp.text()
-#             soup = BeautifulSoup(await resp.text())
-#             print(soup)
-#
-# loop = asyncio.get_event_loop()
-# loop.run_until_complete(main())
