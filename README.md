@@ -21,7 +21,7 @@ session operates in a virtual environment set up by `venv`.
 Once `pip` has finished downloading the dependencies:
 
 ```sh
-python -m pip install -r requirements. txt
+python -m pip install -r requirements.txt
 ```
 
 Create migrations:
