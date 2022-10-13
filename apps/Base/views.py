@@ -7,6 +7,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from apps.Base.serializers import CatalogSerializer, NewArticleSerializer
 import json
+from apps.Base import scraper
 import requests
 
 
@@ -33,7 +34,14 @@ class ArticleView(generics.GenericAPIView):
     serializer_class = NewArticleSerializer
 
     def post(self, request):
-        serializer = self.get_serializer(data=request.data)
+        article = request.data.get('article')
+        req = requests.get(f'https://basket-05.wb.ru/vol735/part73512/{article}/info/ru/card.json').json()
+        data = {
+            'article': req.get('nm_id'),
+            'brand': req.get('imt_name'),
+            'title': req.get('description')
+        }
+        serializer = self.get_serializer(data=data)
         serializer.is_valid(raise_exception=True)
         article = serializer.save()
         return Response({'article': NewArticleSerializer(article, context=self.get_serializer_context()).data})

@@ -8,6 +8,7 @@ urlpatterns = [
 
     path('catalog/', DataView.as_view()),
     path('input/', ArticleView.as_view()),
+    path('product/', CatalogView.as_view({'get': 'list'})),
 
 ]
 
